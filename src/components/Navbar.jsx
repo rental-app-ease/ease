@@ -49,10 +49,12 @@ const Navbar = () => {
             {isDropdownOpen && (
               <ul className="absolute left-0 mt-2 bg-orange-600 shadow-lg rounded-md text-white w-40">
                 <Link to= "/service-dash"><li className="hover:bg-orange-300 px-4 py-2 cursor-pointer">Singleroom sef</li></Link>
-                
-                <li className="hover:bg-orange-300 px-4 py-2 cursor-pointer">Two Bedrooms</li>
-                <li className="hover:bg-orange-300 px-4 py-2 cursor-pointer">Chamber & halls</li>
-                <li className="hover:bg-orange-300 px-4 py-2 cursor-pointer">Three Bedrooms</li>
+
+                <Link to= "/service-dash/twobedroom"><li className="hover:bg-orange-300 px-4 py-2 cursor-pointer">Twobedroom sef</li></Link>
+
+                <Link to= "/service-dash/chamber"><li className="hover:bg-orange-300 px-4 py-2 cursor-pointer">Chamber & halls</li></Link>
+
+                <Link to= "/service-dash/threebedroom"><li className="hover:bg-orange-300 px-4 py-2 cursor-pointer">Three Bedrooms</li></Link>
               </ul>
             )}
           </li>

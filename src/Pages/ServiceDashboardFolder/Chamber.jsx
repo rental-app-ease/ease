@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 import { useContext } from 'react';
 import { PageContentContext } from '../../assets/layouts/ServicesDashboard'; // Import the context
 
-export const SingleRoom = () => {
+ const Chamber = () => {
   const [products, setProducts] = useState([]);
   const { setPageTitle, setPageDescription } = useContext(PageContentContext); // Access the context
 
@@ -17,8 +17,8 @@ export const SingleRoom = () => {
 
   useEffect(() => {
     // Set the title and description for this page
-    setPageTitle("SINGLEROOM SELF-CONTAINED");
-    setPageDescription("Single-Room");
+    setPageTitle("CHAMBER AND HALL");
+    setPageDescription("Chamber and Hall");
 
     getProducts();
   }, [setPageTitle, setPageDescription]);
@@ -32,7 +32,7 @@ export const SingleRoom = () => {
         </p>
 
         <h1 className="text-4xl md:text-5xl font-bold text-gray-900 leading-snug">
-          Explore our wide range of <br /> single room self contained
+          Explore our wide range of <br /> Chamber and hall self contained
         </h1>
       </div>
 
@@ -65,3 +65,4 @@ export const SingleRoom = () => {
   );
 };
 
+export default Chamber

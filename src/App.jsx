@@ -10,7 +10,7 @@ import History from './Pages/userDashborardFolder/History'
 import PendingRequest from './Pages/userDashborardFolder/PendingRequest'
 import { Cart } from './Pages/userDashborardFolder/Cart'
 import { ServicesDashboard } from './assets/layouts/ServicesDashboard'
-import {SingleRoom } from './Pages/ServiceDashboardFolder/SingleRoom'
+import { SingleRoom } from './Pages/ServiceDashboardFolder/SingleRoom'
 import AddProduct from './Pages/renterDasboardFolder/AddProduct'
 import Log from './Pages/authForm/Log'
 import SignIn from './Pages/authForm/Sign'
@@ -18,6 +18,8 @@ import UserDetails from './Pages/homeFold/UserDetails'
 import Details from './Pages/renterDasboardFolder/Details'
 import TwobedRoom from './Pages/ServiceDashboardFolder/TwobedRoom'
 import Navbar from './components/Navbar'
+import Chamber from './Pages/ServiceDashboardFolder/Chamber'
+import ThreebedRoom from './Pages/ServiceDashboardFolder/Threebedroom'
 
 function App() {
   const router = createBrowserRouter([
@@ -39,12 +41,12 @@ function App() {
 
     {
       path: "/nav",
-      element: <Navbar/>
+      element: <Navbar />
     },
 
     {
       path: "userdetails/:id",
-      element: <UserDetails/>
+      element: <UserDetails />
     },
 
     {
@@ -63,7 +65,7 @@ function App() {
 
         {
           path: "products/:id",
-          element: <Details/>
+          element: <Details />
         },
 
         {
@@ -100,12 +102,20 @@ function App() {
       children: [
         {
           index: true,
-          element: <SingleRoom/>
+          element: <SingleRoom />
         },
         {
           path: "twobedroom",
           element: <TwobedRoom />
         },
+        {
+          path: "chamber",
+          element: <Chamber />
+        },
+        {
+          path: "threebedroom",
+          element: <ThreebedRoom/>
+        }
       ]
     }
   ])

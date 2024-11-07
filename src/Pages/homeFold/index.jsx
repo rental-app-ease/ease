@@ -3,6 +3,7 @@ import { apiGetProducts } from '../../services/products';
 import { Link } from 'react-router-dom';
 import Navbar from '../../components/Navbar';
 import pic from '../homeFold/headhouse.jpg'
+import Footer from '../../components/Footer';
 
 const Home = () => {
   const [products, setProducts] = useState([]);
@@ -113,10 +114,12 @@ const Home = () => {
         </div>
       </div>
 
-      <form className="mt-4">
+      {/* <form className="mt-4">
         <input type="text" placeholder='search' className="border p-2 rounded-md" />
-      </form>
+      </form> */}
+    <Footer/>
     </div>
+    
 
   )
 }
