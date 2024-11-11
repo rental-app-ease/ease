@@ -12,7 +12,7 @@ const Navbar = () => {
     <div className="bg-white px-4 md:px-8 py-4 fixed top-0 left-0 w-full z-50 shadow-md">
       <nav className="flex items-center justify-between h-[60px]">
         <h3 className="font-audiowide text-2xl md:text-3xl text-orangeAccent">
-          HOME<span className="text-black">RIDE</span>
+          RENT<span className="text-black">EASE</span>
         </h3>
 
         {/* Hamburger Icon for Mobile */}
@@ -39,7 +39,7 @@ const Navbar = () => {
         <ul className="hidden md:flex space-x-6 text-base font-medium text-gray-800">
 
           <Link to="/"> <li className="hover:text-orange-600 cursor-pointer">Home</li></Link>
-          <li className="hover:text-orange-600 cursor-pointer">About Us</li>
+          <Link to="/about"><li className="hover:text-orange-600 cursor-pointer">About Us</li></Link>
           <li className="relative cursor-pointer" onClick={() => setIsDropdownOpen(!isDropdownOpen)}>
             <div className="flex items-center space-x-1 hover:text-orange-600">
               <span>Services</span>
