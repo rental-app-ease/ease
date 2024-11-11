@@ -54,12 +54,12 @@ function App() {
       element: <RenterDashboard />,
       children: [
         {
-          path: "over",
+          index: true,
           element: <Listings />
         },
 
         {
-          index: true,
+          path: "add",
           element: <AddProduct />
         },
 

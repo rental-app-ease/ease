@@ -56,7 +56,7 @@ const Details = () => {
   };
 
   return (
-    <div className="flex flex-col md:flex-row md:ml-[5vw] items-center md:items-start bg-gray-100 min-h-screen p-8">
+    <div className="flex flex-col md:flex-row md:ml-[5vw] items-center md:items-start bg-gray-100 min-h-screen p-8 mt-32">
       {/* Advert Image and Info */}
       <div className="w-full md:w-[30vw] p-6 bg-white rounded-lg shadow-xl transform transition-transform hover:scale-105">
         <img
@@ -80,7 +80,7 @@ const Details = () => {
       <div className="w-full md:w-[40vw] m-4">
         {isEditing ? (
           <div className="bg-white p-6 rounded-lg shadow-xl transition-transform transform hover:scale-105">
-            <h1 className="font-extrabold text-2xl mb-6 text-gray-800">
+            <h1 className="font-extrabold text-2xl mb-6 text-orange-600">
               Edit Advert
             </h1>
             <form className="space-y-4" onSubmit={updateAdvert}>
@@ -157,7 +157,7 @@ const Details = () => {
 
               {/* Submit Button */}
               <button
-                className={`w-full bg-blue-500 text-white p-3 rounded-lg font-bold mt-6 transition-all hover:bg-blue-600 transform hover:scale-105 ${
+                className={`w-full bg-orange-600 text-white p-3 rounded-lg font-bold mt-6 transition-all hover:bg-orange-400 transform hover:scale-105 ${
                   isSubmitting ? "cursor-not-allowed opacity-50" : ""
                 }`}
                 type="submit"
@@ -170,7 +170,7 @@ const Details = () => {
             {/* Cancel Button */}
             <button
               onClick={() => setIsEditing(false)}
-              className="mt-4 w-full bg-gray-500 text-white p-3 rounded-lg font-bold transition-all hover:bg-gray-600 transform hover:scale-105"
+              className="mt-4 w-full bg-black text-white p-3 rounded-lg font-bold transition-all hover:bg-gray-800 transform hover:scale-105"
             >
               Cancel
             </button>
@@ -184,7 +184,8 @@ const Details = () => {
               {/* Edit Button */}
               <button
                 onClick={() => setIsEditing(true)}
-                className="bg-blue-500 text-white p-3 rounded-lg font-bold transition-all hover:bg-blue-600 transform hover:scale-105"
+                className="bg-black text-white p-3 rounded-lg font-bold transition-all hover:bg-gray
+                transform hover:scale-105"
               >
                 Edit
               </button>
@@ -192,7 +193,7 @@ const Details = () => {
               {/* Delete Button */}
               <button
                 onClick={deleteAdd}
-                className="bg-red-500 text-white p-3 rounded-lg font-bold transition-all hover:bg-red-600 transform hover:scale-105"
+                className="bg-orange-600 text-white p-3 rounded-lg font-bold transition-all hover:bg-red-600 transform hover:scale-105"
               >
                 Delete
               </button>

@@ -39,7 +39,7 @@ const SignIn = () => {
     <div>
       <Navbar />
       <ToastContainer position="top-left" autoClose={3000} hideProgressBar />
-      <div className="flex items-center justify-center min-h-screen bg-[#fff8f6] pt-20">
+      <div className="flex items-center justify-center min-h-screen pt-20 bg-black">
         <div className="w-full max-w-md p-8 space-y-6 bg-black rounded-lg shadow-lg mt-8">
           {/* Form Header */}
           <h2 className="text-2xl font-bold text-center text-orange-600">Vendor Signup</h2>
@@ -95,7 +95,7 @@ const SignIn = () => {
                 name="role"
                 className="mt-1 block w-full px-3 py-2 border border-gray-500 rounded-md bg-black text-white focus:outline-none focus:ring-2 focus:ring-orange-600 focus:border-orange-600 transition"
               >
-                <option value="vendor">Vendor</option>
+                < option value="vendor">Vendor </option>
                 <option value="user">User</option>
               </select>
             </div>

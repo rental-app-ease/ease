@@ -18,7 +18,7 @@ import { PageContentContext } from '../../assets/layouts/ServicesDashboard'; // 
   useEffect(() => {
     // Set the title and description for this page
     setPageTitle("THREEBEDROOM SELF-CONTAINED");
-    setPageDescription(" Tree-bedroom");
+    setPageDescription(" Three-bedroom");
 
     getProducts();
   }, [setPageTitle, setPageDescription]);

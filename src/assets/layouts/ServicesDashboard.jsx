@@ -22,7 +22,7 @@ export const ServicesDashboard = () => {
         <Navbar />
 
         <div
-          className="mt-10 w-[95vw] h-[80vh] mx-auto flex flex-col justify-center items-center relative rounded-[50px] border border-gray-300 overflow-hidden bg-cover bg-center text-center"
+          className="mt-24 w-[95vw] h-[80vh] mx-auto flex flex-col justify-center items-center relative rounded-[50px] border border-gray-300 overflow-hidden bg-cover bg-center text-center"
           style={{ backgroundImage: `url(${picc})` }}
         >
           {/* Dark Overlay */}

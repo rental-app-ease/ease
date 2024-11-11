@@ -18,7 +18,7 @@ const Footer = () => {
         />
         <button
           type="submit"
-          className="bg-orange-700 hover:bg-orange-800 text-white font-bold py-3 px-6 rounded-r-full transition duration-300"
+          className="bg-orange-600 hover:bg-orange-800 text-white font-bold py-3 px-6 rounded-r-full transition duration-300"
         >
           Join
         </button>
