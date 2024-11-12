@@ -95,7 +95,7 @@ const SignIn = () => {
                 name="role"
                 className="mt-1 block w-full px-3 py-2 border border-gray-500 rounded-md bg-black text-white focus:outline-none focus:ring-2 focus:ring-orange-600 focus:border-orange-600 transition"
               >
-                < option value="vendor">Vendor </option>
+                < option value="admin">admin </option>
                 <option value="user">User</option>
               </select>
             </div>

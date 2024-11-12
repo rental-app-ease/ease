@@ -20,7 +20,7 @@ import TwobedRoom from './Pages/ServiceDashboardFolder/TwobedRoom'
 import Navbar from './components/Navbar'
 import Chamber from './Pages/ServiceDashboardFolder/Chamber'
 import ThreebedRoom from './Pages/ServiceDashboardFolder/Threebedroom'
-import { Aboutus } from './Pages/Aboutus'
+import { Aboutus } from './Pages/aboutfolder/Aboutus'
 
 function App() {
   const router = createBrowserRouter([
@@ -46,7 +46,8 @@ function App() {
     },
 
     {
-      path: "userdetails/:id",
+      // path: "userdetails/:id",
+      path: "/userdetails",
       element: <UserDetails />
     },
 
