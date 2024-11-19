@@ -5,11 +5,15 @@ import Footer from "../../components/Footer";
 import { apiSignup } from "../../services/auth";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { useUser } from "../../components/userContext";
 
 const SignIn = () => {
+  const {user, setUser} = useUser()
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
   const [role, setRole] = useState("vendor");
+
+
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -25,8 +29,13 @@ const SignIn = () => {
       };
 
       const response = await apiSignup(payload);
-      toast.success("Signup successful!");
+      if(response.status === 200 || response.status === 201){
+        console.log("Sign up response --->", response.data)
+
+        toast.success("Signup successful!");
       navigate("/login");
+      }
+      
     } catch (error) {
       toast.error("Signup failed. Please try again.");
       console.error(error);

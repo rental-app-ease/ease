@@ -4,6 +4,8 @@ import { Link } from 'react-router-dom';
 import Navbar from '../../components/Navbar';
 import pic from '../homeFold/headhouse.jpg'
 import Footer from '../../components/Footer';
+import { BiMap, BiDollarCircle } from "react-icons/bi";
+
 
 const Home = () => {
   const [products, setProducts] = useState([]);
@@ -31,13 +33,13 @@ const Home = () => {
         {/* Content */}
         <div className="relative z-10 flex flex-col items-center text-white px-6 md:px-12 space-y-6">
           <h3 className="text-orange-600 text-sm md:text-base font-semibold">
-            Welcome To Home Ride
+            Welcome To RentEase
           </h3>
           <h1 className="text-3xl md:text-5xl lg:text-6xl font-bold leading-tight">
-            Looking to rent a house that <br /> feels more like home?
+            Looking to rent a house that <br /> feels like home?
           </h1>
           <p className="text-sm md:text-base lg:text-lg max-w-2xl text-gray-300">
-            Whether you’re planning a weekend getaway, a business trip, or just need a reliable ride for the day, we offer a wide range of vehicles to suit your needs.
+            Whether you’re planning a short stay, relocating for work, or just looking for a comfortable place to call home, we offer a wide range of apartments to suit your needs.
           </p>
 
           {/* Buttons */}
@@ -69,7 +71,7 @@ const Home = () => {
           </h1>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 ">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 mx-20 ">
           {products.map((product) => (
             <Link
               to={`/userdetails/${product.id}`}
@@ -77,7 +79,7 @@ const Home = () => {
               className="relative block rounded-lg shadow-lg overflow-hidden transition-transform duration-300 ease-in-out transform hover:scale-105 group"
             >
               {/* Card Wrapper */}
-              <div className="relative bg-white p-6 flex flex-col gap-y-4 overflow-hidden rounded-lg border border-gray-200">
+              <div className="relative bg-white p-6 flex flex-col gap-y-4 overflow-hidden rounded-lg border border-gray-200 shadow-lg">
 
                 {/* Hover effect overlay */}
                 <div className="absolute inset-0 bg-orange-600 transition-transform duration-300 ease-in-out transform translate-y-full group-hover:translate-y-0"></div>
@@ -87,7 +89,7 @@ const Home = () => {
 
                   {/* Icon/Image */}
                   <img
-                    src={`https://savefiles.org/${product.icon}?shareable_link=437`}
+                    src={`https://savefiles.org/${product.image}?shareable_link=507`}
                     alt={product.title}
                     className="w-full h-40 object-cover rounded-md"
                   />
@@ -95,31 +97,26 @@ const Home = () => {
                   {/* Title */}
                   <h3 className="text-lg font-bold text-gray-800 text-center">{product.title}</h3>
 
-                  {/* Category */}
-                  <p className="text-sm text-gray-600 text-center">{product.category}</p>
-
-                  {/* Description */}
-                  {/* <p className="text-sm text-gray-600 text-center">
-            {product.description}
-          </p> */}
+                  <div className="flex items-center justify-center text-gray-600 mt-1">
+                    <BiMap className="mr-1" />
+                    <span className="text-sm">{product.location}</span>
+                  </div>
 
                   {/* Price */}
-                  <span className="block mt-4 text-lg font-semibold text-blue-600">
+                  <span className="block mt-4 text-lg font-semibold text-black">
                     ${product.price}
                   </span>
                 </div>
+
               </div>
             </Link>
           ))}
         </div>
       </div>
 
-      {/* <form className="mt-4">
-        <input type="text" placeholder='search' className="border p-2 rounded-md" />
-      </form> */}
-    <Footer/>
+      <Footer />
     </div>
-    
+
 
   )
 }

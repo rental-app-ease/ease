@@ -11,7 +11,8 @@ import { PageContentContext } from '../../assets/layouts/ServicesDashboard'; // 
 
   const getProducts = async () => {
     const response = await apiGetProducts();
-    setProducts(response.data);
+    //fitering
+    setProducts(response.data.filter(room=>room.description==="Three bedroom"));
     console.log(response.data);
   };
 
@@ -47,12 +48,12 @@ import { PageContentContext } from '../../assets/layouts/ServicesDashboard'; // 
               <div className="absolute inset-0 bg-orange-600 transition-transform duration-300 ease-in-out transform translate-y-full group-hover:translate-y-0"></div>
               <div className="relative z-10 flex flex-col items-center space-y-4">
                 <img
-                  src={`https://savefiles.org/${product.icon}?shareable_link=437`}
+                  src={`https://savefiles.org/${product.image}?shareable_link=507`}
                   alt={product.title}
                   className="w-full h-40 object-cover rounded-md"
                 />
                 <h3 className="text-lg font-bold text-gray-800 text-center">{product.title}</h3>
-                <p className="text-sm text-gray-600 text-center">{product.category}</p>
+                <p className="text-sm text-gray-600 text-center">{product.category.housetype}</p>
                 <span className="block mt-4 text-lg font-semibold text-blue-600">
                   ${product.price}
                 </span>

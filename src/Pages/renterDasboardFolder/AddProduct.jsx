@@ -1,19 +1,28 @@
 import axios from "axios";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 const AddAdverts = () => {
+  const [categories, setCategories] = useState([]);
   const [feedbackMessage, setFeedbackMessage] = useState(null);
   const [isError, setIsError] = useState(false);
   const navigate = useNavigate();
 
+  const getCategories = async () => {
+   
+      const response = await axios.get(`https://rentease-api-zedw.onrender.com/categories`);
+      setCategories(response.data); // Set categories from API response
+  };
+useEffect(() => {
+        getCategories();
+      }, [])
   const saveAdvert = async (event) => {
     event.preventDefault();
     const formData = new FormData(event.target);
 
     try {
       const res = await axios.post(
-        `${import.meta.env.VITE_BASE_URL}/adverts`,
+        `${import.meta.env.VITE_BASE_URL}/items`,
         formData
       );
       setFeedbackMessage("Advert added successfully!");
@@ -80,7 +89,7 @@ const AddAdverts = () => {
               type="text"
               placeholder="Enter map link"
               required
-              name="mapLink"
+              name="googlemaplink"
             />
           </div>
 
@@ -92,6 +101,39 @@ const AddAdverts = () => {
               placeholder="Enter price"
               required
               name="price"
+            />
+          </div>
+
+          <div>
+            <label className="block text-sm font-medium text-gray-300">Renter name</label>
+            <input
+              className="w-full px-4 py-2 border border-gray-500 rounded-md bg-black text-white focus:outline-none focus:ring-2 focus:ring-orange-600 focus:border-orange-600 transition"
+              type="text"
+              placeholder="Enter your name"
+              required
+              name="rentername"
+            />
+          </div>
+
+          <div>
+            <label className="block text-sm font-medium text-gray-300">Renter contact</label>
+            <input
+              className="w-full px-4 py-2 border border-gray-500 rounded-md bg-black text-white focus:outline-none focus:ring-2 focus:ring-orange-600 focus:border-orange-600 transition"
+              type="text"
+              placeholder="Enter your number"
+              required
+              name="rentercontact"
+            />
+          </div>
+
+          <div>
+            <label className="block text-sm font-medium text-gray-300">Whatsapp link</label>
+            <input
+              className="w-full px-4 py-2 border border-gray-500 rounded-md bg-black text-white focus:outline-none focus:ring-2 focus:ring-orange-600 focus:border-orange-600 transition"
+              type="text"
+              placeholder="Enter your whatsapp link"
+              required
+              name="whatsapplink"
             />
           </div>
 
@@ -115,28 +157,24 @@ const AddAdverts = () => {
               name="amenities"
             ></textarea>
           </div>
-
           <div>
-            <label className="block text-sm font-medium text-gray-300">Category</label>
-            <select
-              className="w-full px-3 py-2 border border-gray-500 rounded-md bg-black text-white focus:outline-none focus:ring-2 focus:ring-orange-600 focus:border-orange-600 transition"
-              required
-              name="category"
-            >
-              <option value="">Select a category</option>
-              <option value="single-room">Single Room</option>
-              <option value="chamber-and-hall">Chamber and Hall</option>
-              <option value="two-bedroom">Two Bedroom</option>
-              <option value="three-bedroom">Three Bedroom</option>
-            </select>
-          </div>
-
+          <label className="block text-sm font-medium text-gray-300">Category</label>
+          <select name="category" required className="w-full px-3 py-2 border border-gray-500 rounded-md bg-black text-white focus:outline-none focus:ring-2 focus:ring-orange-600 focus:border-orange-600 transition">
+           
+            {categories.map((category) => {
+              return <option key={category.id} value={category.id}>
+              {category.housetype} 
+            </option>
+            })}
+            
+          </select>
+        </div>
           <div>
             <label className="block text-sm font-medium text-gray-300">Room Status</label>
             <select
               className="w-full px-3 py-2 border border-gray-500 rounded-md bg-black text-white focus:outline-none focus:ring-2 focus:ring-orange-600 focus:border-orange-600 transition"
               required
-              name="status"
+              name="roomstatus"
             >
               <option value="">Select room status</option>
               <option value="available">Available</option>
@@ -145,12 +183,12 @@ const AddAdverts = () => {
           </div>
 
           <div className="col-span-1 md:col-span-2">
-            <label className="block text-sm font-medium text-gray-300">Icon</label>
+            <label className="block text-sm font-medium text-gray-300">image</label>
             <input
               className="w-full px-4 py-2 border border-gray-500 rounded-md bg-black text-white focus:outline-none focus:ring-2 focus:ring-orange-600 focus:border-orange-600 transition"
               type="file"
               required
-              name="icon"
+              name="image"
             />
           </div>
 

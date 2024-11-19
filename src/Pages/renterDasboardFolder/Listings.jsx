@@ -36,7 +36,7 @@ const Home = () => {
       
                         {/* Icon/Image */}
                         <img
-                          src={`https://savefiles.org/${product.icon}?shareable_link=437`}
+                          src={`https://savefiles.org/${product.image}?shareable_link=507`}
                           alt={product.title}
                           className="w-full h-40 object-cover rounded-md"
                         />
@@ -45,8 +45,11 @@ const Home = () => {
                         <h3 className="text-lg font-bold text-gray-800 text-center">{product.title}</h3>
       
                         {/* Category */}
-                        <p className="text-sm text-gray-600 text-center">{product.category}</p>
-      
+                        <p className="text-sm text-gray-600 text-center">{product.category.housetype}</p>
+
+                        <p className="text-sm text-gray-600 text-center">{product.description}</p>
+
+                        
                         {/* Description */}
                         {/* <p className="text-sm text-gray-600 text-center">
                   {product.description}

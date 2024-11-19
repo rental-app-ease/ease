@@ -6,8 +6,10 @@ import { apiSignin } from "../../services/auth";
 // import { GoogleOAuthProvider, GoogleLogin } from "@react-oauth/google"; // Google auth
 import { ToastContainer, toast } from "react-toastify"; // Toast library
 import "react-toastify/dist/ReactToastify.css"; // Toastify styles
+import { useUser } from "../../components/userContext";
 
 const Log = () => {
+  const {user, setUser}= useUser()
   const navigate = useNavigate(); // Initialize useNavigate for redirection after login
   const [role, setRole] = useState("vendor"); // State to store the selected role
 
@@ -23,17 +25,17 @@ const Log = () => {
       if (response.status === 200) {
         // Store token
         localStorage.setItem("token", response.data.accessToken);
+        localStorage.setItem("user", JSON.stringify({email}))
+        setUser({email})       
         //get user profile
         // const ProfileResponse = await apiGetProfile();
         // console.log(ProfileResponse.data);
 
-        // Show success toast
+        // Show success toast 
         toast.success("Login successful!");
 
         // Redirect user after successful login
-        setTimeout(() => {
           navigate("/renterdash"); // Change to your desired path
-        }, 2000);
       }
     } catch (error) {
       // Show error toast

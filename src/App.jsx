@@ -6,9 +6,7 @@ import { RenterDashboard } from './assets/layouts/RenterDashboard'
 import Listings from './Pages/renterDasboardFolder/Listings'
 import { ReviewMessages } from './Pages/renterDasboardFolder/ReviewMessages'
 import { UserDashboard } from './assets/layouts/UserDashboard'
-import History from './Pages/userDashborardFolder/History'
 import PendingRequest from './Pages/userDashborardFolder/PendingRequest'
-import { Cart } from './Pages/userDashborardFolder/Cart'
 import { ServicesDashboard } from './assets/layouts/ServicesDashboard'
 import { SingleRoom } from './Pages/ServiceDashboardFolder/SingleRoom'
 import AddProduct from './Pages/renterDasboardFolder/AddProduct'
@@ -21,8 +19,27 @@ import Navbar from './components/Navbar'
 import Chamber from './Pages/ServiceDashboardFolder/Chamber'
 import ThreebedRoom from './Pages/ServiceDashboardFolder/Threebedroom'
 import { Aboutus } from './Pages/aboutfolder/Aboutus'
+import { UserProvider } from './components/userContext'
+import { useEffect } from 'react'
+import { useUser } from './components/userContext'
+import UserRoute from './routes/UserRoute'
+
+
 
 function App() {
+
+  const { user, setUser } = useUser()
+
+  useEffect(() => {
+    // check if there is user informationd in the local storage
+    // if there is, put it in state
+
+    if (localStorage.getItem("user")) {
+      setUser(localStorage.getItem("user"))
+    }
+  }, [])
+
+
   const router = createBrowserRouter([
     {
       path: "/",
@@ -37,28 +54,33 @@ function App() {
 
     {
       path: "/signin",
+
       element: <SignIn />
     },
 
     {
       path: "/nav",
-      element: <Navbar />
+      element:
+
+        <Navbar />
+
+
     },
 
     {
-      // path: "userdetails/:id",
-      path: "/userdetails",
+      path: "/userdetails/:id",
       element: <UserDetails />
     },
 
-   {
-    path: "about",
-    element: <Aboutus/>
-   },
+    {
+      path: "about",
+      element: <Aboutus />
+    },
 
     {
       path: "/renterdash",
-      element: <RenterDashboard />,
+
+      element: <UserRoute> <RenterDashboard /></UserRoute>,
       children: [
         {
           index: true,
@@ -87,19 +109,12 @@ function App() {
       path: "/userdash",
       element: <UserDashboard />,
       children: [
-        {
-          index: true,
-          element: <History />
-        },
 
         {
           path: "pending-requests",
           element: <PendingRequest />
         },
-        {
-          path: "cart",
-          element: <Cart />
-        }
+
       ]
     },
 
@@ -121,14 +136,16 @@ function App() {
         },
         {
           path: "threebedroom",
-          element: <ThreebedRoom/>
+          element: <ThreebedRoom />
         }
       ]
     }
   ])
   return (
     <>
-      <RouterProvider router={router} />
+      
+        <RouterProvider router={router} />
+      
     </>
   )
 }
