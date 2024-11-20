@@ -16,13 +16,11 @@ export const Aboutus = () => {
     switch (activeSection) {
       case "vision":
         return (
-
-          <div className="container mx-auto px-4 py-10 mt-20">
-            {/* Subheading */}
-            <div className="text-center space-y-2">
-              <p className="text-orange-600 text-sm font-medium flex justify-center items-center space-x-1">
+          <div className="container mx-auto px-4 py-10">
+            <div className="text-center">
+              <p className="text-orange-600 text-sm font-medium flex justify-center items-center space-x-1 mb-8">
                 <span className="text-orange-600">✱</span>
-                <span>Our Mission</span>
+                <span>Our vission</span>
               </p>
             </div>
 
@@ -60,20 +58,18 @@ export const Aboutus = () => {
         );
       case "mission":
         return (
-          <div className="container mx-auto px-4 py-10 mt-20">
-            {/* Subheading */}
-            <div className="text-center space-y-2">
-              <p className="text-orange-600 text-sm font-medium flex justify-center items-center space-x-1">
+          <div className="container mx-auto px-4 py-10">
+            <div className="text-center">
+              <p className="text-orange-600 text-sm font-medium flex justify-center items-center space-x-1 mb-8">
                 <span className="text-orange-600">✱</span>
-                <span>Our Vission</span>
+                <span>Our Mision</span>
               </p>
-
             </div>
 
-            <div className="flex flex-col lg:flex-row items-center lg:items-start lg:space-x-6 mt-8 lg:mt-16">
+            <div className="flex flex-col lg:flex-row items-center lg:items-start lg:space-x-6">
               {/* Text Section */}
               <div className="lg:w-1/2 space-y-4">
-                <p className="text-gray-700 text-lg">
+                <p className="text-gray-700 text-lg leading-relaxed">
                   Our mission is to redefine the rental experience by providing a seamless, user-friendly platform that connects individuals with high-quality apartments and rental spaces tailored to their needs. We are committed to making renting easy, transparent, and accessible for everyone, whether you’re looking for a short-term stay or a long-term home.
 
                   By prioritizing customer satisfaction, we aim to offer a diverse selection of well-maintained properties that meet high standards of safety, comfort, and quality. Through continuous innovation and dedication to service excellence, we strive to empower renters and property owners alike, creating a community built on trust and convenience.
@@ -106,35 +102,24 @@ export const Aboutus = () => {
         );
       case "approach":
         return (
-          <div className="container mx-auto px-4 py-10 mt-20">
-            {/* Subheading */}
-            <div className="text-center space-y-2">
-              <p className="text-orange-600 text-sm font-medium flex justify-center items-center space-x-1">
+          <div className="container mx-auto px-4 py-10">
+            <div className="text-center">
+              <p className="text-orange-600 text-sm font-medium flex justify-center items-center space-x-1 mb-8">
                 <span className="text-orange-600">✱</span>
                 <span>Our Approach</span>
               </p>
-
             </div>
 
-            <div className="flex flex-col lg:flex-row items-center lg:items-start lg:space-x-6 mt-8 lg:mt-16">
+            <div className="flex flex-col lg:flex-row items-center lg:items-start lg:space-x-6">
               {/* Text Section */}
               <div className="lg:w-1/2 space-y-4">
-                <p className="text-gray-700 text-lg">
+                <p className="text-gray-700 text-lg leading-relaxed">
                   Our approach centers on innovation, user-centric design, and a commitment to quality service. We believe that renting a home should be as smooth and transparent as possible, so we continuously improve our platform with the latest technology and customer feedback. Here’s how we approach making this vision a reality:
-
                   Customer-First Mindset
                   We listen closely to our users, tailoring our platform to address their unique needs, preferences, and challenges. Our goal is to ensure that both renters and property owners have a seamless experience from start to finish.
 
                   Technology-Driven Solutions
-                  We leverage advanced tools to streamline the rental process—whether it’s through intuitive search options, secure online transactions, or real-time property updates. By prioritizing innovation, we make renting easier, safer, and more efficient.
-
-                  Transparency and Trust
-                  Building trust is essential. We ensure that every listing is accurate, verified, and detailed so that users can make informed decisions with confidence. Transparency is at the heart of our interactions, from property information to communication with landlords.
-
-                  Sustainable and Inclusive Growth
-                  We strive to create a rental community that is inclusive and accessible for everyone, while also promoting sustainable practices. From energy-efficient property recommendations to partnerships with eco-conscious landlords, we are dedicated to contributing positively to our communities.
-
-                  Through these principles, we aim to elevate the apartment rental experience, making it reliable, enjoyable, and tailored to modern living.
+                  We leverage advanced tools to streamline the rental process—whether it’s through intuitive search options, secure online transactions, or real-time 
                 </p>
                 <ul className="space-y-2 text-gray-700 text-lg">
                   <li className="flex items-center">
@@ -173,7 +158,7 @@ export const Aboutus = () => {
         {/* Subheading */}
         <p className="text-orange-600 text-sm font-medium flex justify-center items-center space-x-1">
           <span className="text-orange-600">✱</span>
-          <span>About us</span>
+          <span >About us</span>
         </p>
 
         {/* Heading */}

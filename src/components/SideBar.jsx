@@ -1,5 +1,5 @@
 import React from 'react';
-import { FaArrowRight } from 'react-icons/fa';
+import { FaArrowRight, FaHome, FaPlusCircle, FaHistory, FaEnvelope } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 
 const SideBar = () => {
@@ -11,30 +11,36 @@ const SideBar = () => {
         <ul className="space-y-4 text-white">
 
           <Link to= "/renterdash">
-          <li className="flex justify-between items-center hover:text-orange-600 cursor-pointer">
-            <span>Your Listings</span>
+          <li className="flex items-center hover:text-orange-600 cursor-pointer">
+            <FaHome className="mr-3 text-orange-600" />
+            <span className="flex-grow">Your Listings</span>
             <FaArrowRight className="text-white" />
           </li>
           </Link>
           
           <Link to= "/renterdash/add">
-          <li className="flex justify-between items-center hover:text-orange-600 cursor-pointer">
-            <span>Add A House</span>
+          <li className="flex items-center hover:text-orange-600 cursor-pointer">
+            <FaPlusCircle className="mr-3 text-orange-600" />
+            <span className="flex-grow">Add A House</span>
             <FaArrowRight className="text-white" />
           </li>
           </Link>
 
-          <Link to= "">
-          <li className="flex justify-between items-center hover:text-orange-600 cursor-pointer">
-            <span>Airport Transfer</span>
+          <Link to= "/renterdash/history">
+          <li className="flex items-center hover:text-orange-600 cursor-pointer">
+            <FaHistory className="mr-3 text-orange-600" />
+            <span className="flex-grow">History</span>
             <FaArrowRight className="text-white" />
           </li>
           </Link>
 
-          <li className="flex justify-between items-center hover:text-orange-600 cursor-pointer">
-            <span>Chauffeur Services</span>
+          <Link to= "/renterdash/messages">
+          <li className="flex items-center hover:text-orange-600 cursor-pointer">
+            <FaEnvelope className="mr-3 text-orange-600" />
+            <span className="flex-grow">Messages</span>
             <FaArrowRight className="text-white" />
           </li>
+          </Link>
         </ul>
       </div>
 

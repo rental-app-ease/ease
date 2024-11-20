@@ -44,10 +44,13 @@ const Home = () => {
 
           {/* Buttons */}
           <div className="flex space-x-4">
-            <button className="flex items-center px-6 py-3 bg-orange-700 text-white rounded-full font-semibold hover:bg-orange-600 transition duration-300">
+            <Link 
+              to="/all-items"
+              className="flex items-center px-6 py-3 bg-orange-700 text-white rounded-full font-semibold hover:bg-orange-600 transition duration-300"
+            >
               Book A Rental
               <span className="ml-2 text-xl">→</span>
-            </button>
+            </Link>
             <button className="flex items-center px-6 py-3 bg-white text-black rounded-full font-semibold hover:bg-gray-100 transition duration-300">
               Learn More
               <span className="ml-2 text-xl">→</span>
@@ -72,7 +75,7 @@ const Home = () => {
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 mx-20 ">
-          {products.map((product) => (
+          {products.slice(0, 4).map((product) => (
             <Link
               to={`/userdetails/${product.id}`}
               key={product.id}
@@ -112,6 +115,16 @@ const Home = () => {
             </Link>
           ))}
         </div>
+
+        {products.length > 4 && (
+          <Link 
+            to="/all-items" 
+            className="flex items-center px-6 py-3 bg-orange-700 text-white rounded-full font-semibold hover:bg-orange-600 transition duration-300 my-10"
+          >
+            View More
+            <span className="ml-2 text-xl">→</span>
+          </Link>
+        )}
       </div>
 
       <Footer />

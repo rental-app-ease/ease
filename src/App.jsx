@@ -23,6 +23,7 @@ import { UserProvider } from './components/userContext'
 import { useEffect } from 'react'
 import { useUser } from './components/userContext'
 import UserRoute from './routes/UserRoute'
+import AllItems from './Pages/homeFold/AllListings'
 
 
 
@@ -75,6 +76,11 @@ function App() {
     {
       path: "about",
       element: <Aboutus />
+    },
+
+    {
+      path: "/all-items",
+      element: <AllItems/>
     },
 
     {

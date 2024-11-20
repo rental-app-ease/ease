@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react'
 import { apiGetProducts, apiVendorsProduct } from '../../services/products';
 import { Link } from 'react-router-dom';
+
+
 const Home = () => {
-    
     const [products, setProducts] = useState([]);
     const getProducts = async () => {
         const response = await apiVendorsProduct()

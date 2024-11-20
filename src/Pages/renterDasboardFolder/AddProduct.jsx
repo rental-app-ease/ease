@@ -59,8 +59,8 @@ useEffect(() => {
           className="space-y-6 bg-black text-white p-8 rounded-lg shadow-md grid grid-cols-1 md:grid-cols-2 gap-6"
           onSubmit={saveAdvert}
         >
-          {/* Left column */}
-          <div>
+          {/* Basic Information Group */}
+          <div className="col-span-1 md:col-span-2">
             <label className="block text-sm font-medium text-gray-300">Title</label>
             <input
               className="w-full px-4 py-2 border border-gray-500 rounded-md bg-black text-white focus:outline-none focus:ring-2 focus:ring-orange-600 focus:border-orange-600 transition"
@@ -71,6 +71,7 @@ useEffect(() => {
             />
           </div>
 
+          {/* Location Group */}
           <div>
             <label className="block text-sm font-medium text-gray-300">Location</label>
             <input

@@ -61,7 +61,7 @@ const Navbar = () => {
           <Link to="/about"><li className="hover:text-orange-600 cursor-pointer">About Us</li></Link>
           <li className="relative cursor-pointer" onClick={() => setIsDropdownOpen(!isDropdownOpen)}>
             <div className="flex items-center space-x-1 hover:text-orange-600">
-              <span>Services</span>
+              <span>Rooms</span>
               <FiChevronDown />
             </div>
             {/* Dropdown Menu */}

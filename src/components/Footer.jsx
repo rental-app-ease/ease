@@ -4,7 +4,7 @@ import { FaFacebookF, FaGooglePlusG, FaInstagram, FaLinkedinIn, FaTwitter, FaYou
 
 const Footer = () => {
   return (
-    <div className="mt-10 w-[95vw] h-[50vh] mx-auto flex flex-col justify-center items-center relative rounded-[50px] border border-gray-300 overflow-hidden bg-cover bg-center text-center bg-black text-white">
+    <div className="mt-10 w-full h-[50vh] mx-auto flex flex-col justify-center items-center relative  overflow-hidden bg-cover bg-center text-center bg-black text-white">
       {/* Title and Description */}
       <h3 className="text-3xl font-semibold mb-2">Let's Connect!</h3>
       <p className="text-gray-400 text-sm mb-6">Stay up to date with our latest product updates and announcements</p>

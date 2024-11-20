@@ -7,12 +7,36 @@ import { PageContentContext } from '../../assets/layouts/ServicesDashboard'; // 
 
 export const SingleRoom = () => {
   const [products, setProducts] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
   const { setPageTitle, setPageDescription } = useContext(PageContentContext); // Access the context
 
   const getProducts = async () => {
-    const response = await apiGetProducts();
-    setProducts(response.data);
-    console.log(response.data);
+    try {
+      setLoading(true);
+      setError(null);
+      const response = await apiGetProducts();
+      
+      if (!response.data) {
+        throw new Error('No data received from the server');
+      }
+
+      // Filter products for single room category
+      const singleRoomProducts = response.data.filter(
+        product => product.category.housetype.toLowerCase() === "single room"
+      );
+
+      if (singleRoomProducts.length === 0) {
+        setError('No single room properties found');
+      }
+
+      setProducts(singleRoomProducts);
+    } catch (err) {
+      setError(err.message || 'Failed to fetch products');
+      console.error('Error fetching products:', err);
+    } finally {
+      setLoading(false);
+    }
   };
 
   useEffect(() => {
@@ -22,6 +46,34 @@ export const SingleRoom = () => {
 
     getProducts();
   }, [setPageTitle, setPageDescription]);
+
+  if (loading) {
+    return (
+      <div className="w-full h-[50vh] flex justify-center items-center">
+        <div className="text-center">
+          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-orange-600 mx-auto"></div>
+          <p className="mt-4 text-gray-600">Loading properties...</p>
+        </div>
+      </div>
+    );
+  }
+
+  if (error) {
+    return (
+      <div className="w-full h-[50vh] flex justify-center items-center">
+        <div className="text-center text-red-600 p-4 rounded-lg">
+          <p className="text-xl font-semibold">Error</p>
+          <p>{error}</p>
+          <button 
+            onClick={getProducts}
+            className="mt-4 px-4 py-2 bg-orange-600 text-white rounded hover:bg-orange-700"
+          >
+            Try Again
+          </button>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="w-[95vw] mx-auto flex flex-col justify-center items-center relative rounded-[50px] overflow-hidden bg-cover bg-center text-center bg-[#fff8f6] mt-10">
