@@ -7,38 +7,26 @@ import { PageContentContext } from '../../assets/layouts/ServicesDashboard'; // 
 
 export const SingleRoom = () => {
   const [products, setProducts] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
+  const [isLoading, setIsLoading] = useState(true); // Add loading state
+  // const [error, setError] = useState(null);
   const { setPageTitle, setPageDescription } = useContext(PageContentContext); // Access the context
 
   const getProducts = async () => {
     try {
-      setLoading(true);
-      setError(null);
+      setIsLoading(true);
       const response = await apiGetProducts();
-      
-      if (!response.data) {
-        throw new Error('No data received from the server');
-      }
+      console.log('API Response:', response); // Debug log
 
-      // Filter products for single room category
-      const singleRoomProducts = response.data.filter(
-        product => product.category.housetype.toLowerCase() === "single room"
-      );
+      const filteredProducts = response.data.filter(room => room.category?.housetype === "single bedroom self contained");
+      console.log('Filtered Products:', filteredProducts); // Debug log
 
-      if (singleRoomProducts.length === 0) {
-        setError('No single room properties found');
-      }
-
-      setProducts(singleRoomProducts);
-    } catch (err) {
-      setError(err.message || 'Failed to fetch products');
-      console.error('Error fetching products:', err);
+      setProducts(filteredProducts);
+    } catch (error) {
+      console.error('Error fetching products:', error);
     } finally {
-      setLoading(false);
+      setIsLoading(false);
     }
   };
-
   useEffect(() => {
     // Set the title and description for this page
     setPageTitle("SINGLEROOM SELF-CONTAINED");
@@ -47,33 +35,33 @@ export const SingleRoom = () => {
     getProducts();
   }, [setPageTitle, setPageDescription]);
 
-  if (loading) {
-    return (
-      <div className="w-full h-[50vh] flex justify-center items-center">
-        <div className="text-center">
-          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-orange-600 mx-auto"></div>
-          <p className="mt-4 text-gray-600">Loading properties...</p>
-        </div>
-      </div>
-    );
-  }
+  // if (loading) {
+  //   return (
+  //     <div className="w-full h-[50vh] flex justify-center items-center">
+  //       <div className="text-center">
+  //         <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-orange-600 mx-auto"></div>
+  //         <p className="mt-4 text-gray-600">Loading properties...</p>
+  //       </div>
+  //     </div>
+  //   );
+  // }
 
-  if (error) {
-    return (
-      <div className="w-full h-[50vh] flex justify-center items-center">
-        <div className="text-center text-red-600 p-4 rounded-lg">
-          <p className="text-xl font-semibold">Error</p>
-          <p>{error}</p>
-          <button 
-            onClick={getProducts}
-            className="mt-4 px-4 py-2 bg-orange-600 text-white rounded hover:bg-orange-700"
-          >
-            Try Again
-          </button>
-        </div>
-      </div>
-    );
-  }
+  // if (error) {
+  //   return (
+  //     <div className="w-full h-[50vh] flex justify-center items-center">
+  //       <div className="text-center text-red-600 p-4 rounded-lg">
+  //         <p className="text-xl font-semibold">Error</p>
+  //         <p>{error}</p>
+  //         <button 
+  //           onClick={getProducts}
+  //           className="mt-4 px-4 py-2 bg-orange-600 text-white rounded hover:bg-orange-700"
+  //         >
+  //           Try Again
+  //         </button>
+  //       </div>
+  //     </div>
+  //   );
+  // }
 
   return (
     <div className="w-[95vw] mx-auto flex flex-col justify-center items-center relative rounded-[50px] overflow-hidden bg-cover bg-center text-center bg-[#fff8f6] mt-10">
@@ -88,31 +76,46 @@ export const SingleRoom = () => {
         </h1>
       </div>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-        {products.map((product) => (
-          <Link
-            to={`/userdetails/${product.id}`}
-            key={product.id}
-            className="relative block rounded-lg shadow-lg overflow-hidden transition-transform duration-300 ease-in-out transform hover:scale-105 group"
-          >
-            <div className="relative bg-white p-6 flex flex-col gap-y-4 overflow-hidden rounded-lg border border-gray-200">
-              <div className="absolute inset-0 bg-orange-600 transition-transform duration-300 ease-in-out transform translate-y-full group-hover:translate-y-0"></div>
-              <div className="relative z-10 flex flex-col items-center space-y-4">
-                <img
-                  src={`https://savefiles.org/${product.image}?shareable_link=507`}
-                  alt={product.title}
-                  className="w-full h-40 object-cover rounded-md"
-                />
-                <h3 className="text-lg font-bold text-gray-800 text-center">{product.title}</h3>
-                <p className="text-sm text-gray-600 text-center">{product.category.housetype}</p>
-                <span className="block mt-4 text-lg font-semibold text-blue-600">
-                  ${product.price}
-                </span>
+      {isLoading ? (
+        <div className="flex items-center justify-center min-h-[400px]">
+          <div className="animate-spin rounded-full h-16 w-16 border-t-2 border-b-2 border-orange-500"></div>
+        </div>
+      ) : products.length === 0 ? (
+        <div className="min-h-[400px] flex flex-col items-center justify-center">
+          <div className="text-2xl font-semibold text-gray-600 mb-4">No three-bedroom properties available</div>
+          <p className="text-gray-500">Please check back later for new listings</p>
+        </div>
+      ) : (
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+          {products.map((product) => (
+            <Link
+              to={`/userdetails/${product.id}`}
+              key={product.id}
+              className="relative block rounded-lg shadow-lg overflow-hidden transition-transform duration-300 ease-in-out transform hover:scale-105 group"
+            >
+              <div className="relative bg-white p-6 flex flex-col gap-y-4 overflow-hidden rounded-lg border border-gray-200">
+                <div className="absolute inset-0 bg-orange-600 transition-transform duration-300 ease-in-out transform translate-y-full group-hover:translate-y-0"></div>
+                <div className="relative z-10 flex flex-col items-center space-y-4">
+                  <img
+                    src={product.image} // Remove the URL modification
+                    alt={product.title}
+                    className="w-full h-40 object-cover rounded-md"
+                    onError={(e) => {
+                      console.error('Image failed to load:', product.image);
+                      e.target.src = 'fallback-image-url'; // Add a fallback image URL
+                    }}
+                  />
+                  <h3 className="text-lg font-bold text-gray-800 text-center">{product.title}</h3>
+                  <p className="text-sm text-gray-600 text-center">{product.category?.housetype}</p>
+                  <span className="block mt-4 text-lg font-semibold text-blue-600">
+                    ${product.price}
+                  </span>
+                </div>
               </div>
-            </div>
-          </Link>
-        ))}
-      </div>
+            </Link>
+          ))}
+        </div>
+      )}
     </div>
   );
 };

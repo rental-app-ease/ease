@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 import Navbar from '../../components/Navbar';
 import Footer from '../../components/Footer';
+import pic from "../homeFold/loc.jpg"
 
 export const UserDetails = () => {
   const params = useParams();
@@ -30,18 +31,16 @@ export const UserDetails = () => {
         <div className="bg-white p-8 rounded-lg shadow-md max-w-6xl mx-auto mb-6 mt-14">
           <div className="flex items-center justify-between">
             <div>
-              <h1 className="text-3xl font-extrabold text-gray-800 mb-2">
+              <h1 className="text-3xl font-extrabold text-black mb-2">
                 {productDetail.title}
               </h1>
 
-              <p className="text-lg font-semibold text-gray-700 mt-2">
-                Location: <span className="text-green-600">{productDetail.location}</span>
+              <p className="text-lg font-semibold text-black mt-2">
+                Location: <span className="text-gray-700">{productDetail.location}</span>
               </p>
 
             </div>
-            <button className="bg-orange-500 text-white px-6 py-2 rounded-full font-medium hover:bg-orange-600 transition duration-300">
-              Book a Tour
-            </button>
+            
           </div>
 
           {/* Image Gallery */}
@@ -69,8 +68,8 @@ export const UserDetails = () => {
 
             <div className="flex items-center space-x-4 text-gray-600">
 
-              <p className="text-lg font-semibold text-gray-700 mt-2">
-                Price: <span className="text-green-600">${productDetail.price}</span>
+              <p className="text-lg font-semibold text-black mt-2">
+                Price: <span className="text-gray-700">${productDetail.price}</span>
               </p>
 
 
@@ -81,7 +80,7 @@ export const UserDetails = () => {
 
             {/* Property Space */}
             <p className="text-lg font-semibold text-gray-700">
-              Category: <span className="text-blue-600">{productDetail.category?.housetype}</span>
+              Category: <span className="text-gray-700">{productDetail.category?.housetype}</span>
             </p>
 
             <div className="mt-4">
@@ -101,16 +100,21 @@ export const UserDetails = () => {
             <div className="mt-8">
               <h2 className="text-2xl font-bold text-gray-900 mb-4">Location</h2>
               <p className="text-lg font-semibold text-gray-700 mt-2">
-                Google Map Link:
+                Google Map Link:{" "}
                 <a
                   href={productDetail.googlemaplink}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-green-600 underline hover:text-green-800 ml-2"
+                  className="text-orange-600 hover:text-orange-600"
                 >
-                  {productDetail.googlemaplink}
+                  Click to view location. map
                 </a>
               </p>
+
+              <div className='w-[70vw] h-[50vh] my-6'>
+                <img src={pic} alt="title" className="w-full h-full object-cover rounded-lg shadow-md" />
+              </div>
+
             </div>
 
 
@@ -148,10 +152,12 @@ export const UserDetails = () => {
                 )}
               </p>
 
-
-              <button className="mt-4 bg-orange-500 text-white px-6 py-2 rounded-full font-medium hover:bg-orange-600 transition duration-300">
+              <a 
+                href={`sms:${productDetail.rentercontact}?body=Hi, I'm interested in your property listing: ${productDetail.title}`}
+                className="mt-4 inline-block bg-orange-500 text-white px-6 py-2 rounded-full font-medium hover:bg-orange-600 transition duration-300"
+              >
                 Contact Agent
-              </button>
+              </a>
             </div>
           </div>
         </div>

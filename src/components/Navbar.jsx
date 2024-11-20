@@ -59,6 +59,7 @@ const Navbar = () => {
 
           <Link to="/"> <li className="hover:text-orange-600 cursor-pointer">Home</li></Link>
           <Link to="/about"><li className="hover:text-orange-600 cursor-pointer">About Us</li></Link>
+          {user && <Link to="/renterdash"><li className="hover:text-orange-600 cursor-pointer">Dashboard</li></Link>}
           <li className="relative cursor-pointer" onClick={() => setIsDropdownOpen(!isDropdownOpen)}>
             <div className="flex items-center space-x-1 hover:text-orange-600">
               <span>Rooms</span>
@@ -77,12 +78,28 @@ const Navbar = () => {
               </ul>
             )}
           </li>
-          <li className="hover:text-orange-600 cursor-pointer">Contact Us</li>
+        <Link to="/safety">
+          <li className="hover:text-orange-600 cursor-pointer">
+            <a 
+              href={`${window.location.origin}/safety`} 
+              target="_blank" 
+              rel="noopener noreferrer"
+            >
+              Safety Tips
+            </a>
+          </li>
+        </Link>
+
         </ul>
 
         {
           user 
-          ? <button onClick={handleSignOut}>log out</button> 
+          ? <button 
+              onClick={handleSignOut}
+              className="bg-orange-600 text-white px-4 py-2 rounded-full font-semibold hover:bg-orange-700 transition duration-300"
+            >
+              Log Out
+            </button> 
           : 
           <><Link to="/login"> <h4>Login</h4> </Link>
 

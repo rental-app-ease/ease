@@ -16,7 +16,7 @@ import { PageContentContext } from '../../assets/layouts/ServicesDashboard'; // 
       const response = await apiGetProducts();
       console.log('API Response:', response); // Debug log
       
-      const filteredProducts = response.data.filter(room => room.category?.housetype === "Three bedroom");
+      const filteredProducts = response.data.filter(room => room.category?.housetype === "Three bedroom apartment");
       console.log('Filtered Products:', filteredProducts); // Debug log
       
       setProducts(filteredProducts);
@@ -34,6 +34,8 @@ import { PageContentContext } from '../../assets/layouts/ServicesDashboard'; // 
 
     getProducts();
   }, [setPageTitle, setPageDescription]);
+
+  
 
   return (
     <div className="w-[95vw] mx-auto flex flex-col justify-center items-center relative rounded-[50px] overflow-hidden bg-cover bg-center text-center bg-[#fff8f6] mt-10">
@@ -88,6 +90,7 @@ import { PageContentContext } from '../../assets/layouts/ServicesDashboard'; // 
           ))}
         </div>
       )}
+
     </div>
   );
 };

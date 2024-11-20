@@ -98,15 +98,15 @@ const Home = () => {
                   />
 
                   {/* Title */}
-                  <h3 className="text-lg font-bold text-gray-800 text-center">{product.title}</h3>
+                  <h3 className="text-lg font-bold text-gray-800 group-hover:text-white transition-colors duration-300">{product.title}</h3>
 
-                  <div className="flex items-center justify-center text-gray-600 mt-1">
+                  <div className="flex items-center justify-center text-gray-600 group-hover:text-white transition-colors duration-300">
                     <BiMap className="mr-1" />
                     <span className="text-sm">{product.location}</span>
                   </div>
 
                   {/* Price */}
-                  <span className="block mt-4 text-lg font-semibold text-black">
+                  <span className="block mt-4 text-lg font-semibold text-black group-hover:text-white transition-colors duration-300">
                     ${product.price}
                   </span>
                 </div>

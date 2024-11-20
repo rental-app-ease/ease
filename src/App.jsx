@@ -24,6 +24,7 @@ import { useEffect } from 'react'
 import { useUser } from './components/userContext'
 import UserRoute from './routes/UserRoute'
 import AllItems from './Pages/homeFold/AllListings'
+import { Safty } from './Pages/Safty'
 
 
 
@@ -60,12 +61,8 @@ function App() {
     },
 
     {
-      path: "/nav",
-      element:
-
-        <Navbar />
-
-
+     path: "/safety",
+     element: <Safty/>
     },
 
     {

@@ -2,9 +2,21 @@ import React, { useEffect, useState } from 'react';
 import { apiGetProducts } from '../../services/products';
 import Navbar from '../../components/Navbar';
 import Footer from '../../components/Footer';
-import { Link } from 'react-router-dom';
+import { json, Link } from 'react-router-dom';
+import { BiMap  } from "react-icons/bi";
 
 const AllItems = () => {
+  const [category, setCategory] = useState([]);
+  const [searchQuery, setSearchQuery] = useState("");
+  const handleSearch = async (event) => {
+    const query = event.target.value.toLowerCase();
+    setSearchQuery(query);
+    const filter = JSON.stringify({
+      name:{"$regex": query, "$options": "i"}
+    });
+    const response = await apiSearch(filter);
+    setTitle(response.data);
+  }
   const [products, setProducts] = useState([]);
   const getProducts = async () => {
     const response = await apiGetProducts()
@@ -28,6 +40,8 @@ const AllItems = () => {
           <div className="relative w-full max-w-xl">
             <input
               type="text"
+              value={searchQuery}
+              onChange={handleSearch}
               placeholder="Search for apartments..."
               className="w-full px-4 py-3 rounded-full border border-gray-300 focus:outline-none focus:border-orange-500 focus:ring-2 focus:ring-orange-200 transition-all duration-300"
             />
@@ -64,14 +78,15 @@ const AllItems = () => {
                   />
 
                   {/* Title */}
-                  <h3 className="text-lg font-bold text-gray-800 text-center">{product.title}</h3>
+                  <h3 className="text-lg font-bold text-gray-800 group-hover:text-white text-center transition-colors duration-300">{product.title}</h3>
 
-                  <div className="flex items-center justify-center text-gray-600 mt-1">
+                  <div className="flex items-center justify-center text-gray-600 group-hover:text-white transition-colors duration-300">
+                    <BiMap className="mr-1" />
                     <span className="text-sm">{product.location}</span>
                   </div>
 
                   {/* Price */}
-                  <span className="block mt-4 text-lg font-semibold text-black">
+                  <span className="block mt-4 text-lg font-semibold text-black group-hover:text-white transition-colors duration-300">
                     ${product.price}
                   </span>
                 </div>
