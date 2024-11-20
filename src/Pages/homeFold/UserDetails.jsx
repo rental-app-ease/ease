@@ -40,7 +40,9 @@ export const UserDetails = () => {
               </p>
 
             </div>
-            
+            <button className="bg-orange-500 text-white px-6 py-2 rounded-full font-medium hover:bg-orange-600 transition duration-300">
+              Book a Tour
+            </button>
           </div>
 
           {/* Image Gallery */}
@@ -105,7 +107,7 @@ export const UserDetails = () => {
                   href={productDetail.googlemaplink}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-orange-600 hover:text-orange-600"
+                  className="text-green-600 underline hover:text-green-800 ml-2"
                 >
                   Click to view location. map
                 </a>
@@ -133,7 +135,13 @@ export const UserDetails = () => {
               </p>
 
               <p className="text-lg font-semibold text-gray-700 mt-2">
-                Renter's number: <span className="text-green-600">{productDetail.rentercontact}</span>
+                Renter's number:{" "}
+                <a 
+                  href={`sms:${productDetail.rentercontact};body=${encodeURIComponent(`Hi, I'm interested in your property listing: ${productDetail.title}`)}`}
+                  className="text-green-600 hover:underline"
+                >
+                  {productDetail.rentercontact}
+                </a>
               </p>
 
               <p className="text-lg font-semibold text-gray-700 mt-2">
@@ -152,12 +160,10 @@ export const UserDetails = () => {
                 )}
               </p>
 
-              <a 
-                href={`sms:${productDetail.rentercontact}?body=Hi, I'm interested in your property listing: ${productDetail.title}`}
-                className="mt-4 inline-block bg-orange-500 text-white px-6 py-2 rounded-full font-medium hover:bg-orange-600 transition duration-300"
-              >
+
+              <button className="mt-4 bg-orange-500 text-white px-6 py-2 rounded-full font-medium hover:bg-orange-600 transition duration-300">
                 Contact Agent
-              </a>
+              </button>
             </div>
           </div>
         </div>
