@@ -15,6 +15,7 @@ export const Aboutus = () => {
   const renderContent = () => {
     switch (activeSection) {
       case "vision":
+        
         return (
           <div className="container mx-auto px-4 py-10">
             <div className="text-center">
@@ -194,7 +195,7 @@ export const Aboutus = () => {
         </div>
       </div>
 
-      <Footer />
+      {/* <Footer /> */}
     </div>
   );
 };

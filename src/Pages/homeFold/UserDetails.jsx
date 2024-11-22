@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 import Navbar from '../../components/Navbar';
 import Footer from '../../components/Footer';
-import pic from "../homeFold/loc.jpg"
+import pic from "../homeFold/mapp.jpg"
 
 export const UserDetails = () => {
   const params = useParams();
@@ -40,9 +40,7 @@ export const UserDetails = () => {
               </p>
 
             </div>
-            <button className="bg-orange-500 text-white px-6 py-2 rounded-full font-medium hover:bg-orange-600 transition duration-300">
-              Book a Tour
-            </button>
+            
           </div>
 
           {/* Image Gallery */}
@@ -107,7 +105,7 @@ export const UserDetails = () => {
                   href={productDetail.googlemaplink}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-green-600 underline hover:text-green-800 ml-2"
+                  className="text-blue-600 hover:text-blue-300 ml-2"
                 >
                   Click to view location. map
                 </a>
@@ -131,14 +129,14 @@ export const UserDetails = () => {
               <h2 className="text-xl font-bold text-gray-900 mb-2">Agent Contact</h2>
 
               <p className="text-lg font-semibold text-gray-700 mt-2">
-                Renter name: <span className="text-green-600">{productDetail.rentername}</span>
+                Renter name: <span className="text-orange-700">{productDetail.rentername}</span>
               </p>
 
               <p className="text-lg font-semibold text-gray-700 mt-2">
                 Renter's number:{" "}
                 <a 
                   href={`sms:${productDetail.rentercontact};body=${encodeURIComponent(`Hi, I'm interested in your property listing: ${productDetail.title}`)}`}
-                  className="text-green-600 hover:underline"
+                  className="text-orange-700 hover:underline"
                 >
                   {productDetail.rentercontact}
                 </a>
@@ -148,10 +146,11 @@ export const UserDetails = () => {
                 WhatsApp Link:{" "}
                 {productDetail.whatsapplink ? (
                   <a
-                    href={productDetail.whatsapplink}
+                    href={`https://wa.me/${productDetail.whatsapplink}`}
+                    // href={productDetail.whatsapplink}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-green-600 underline"
+                    className="text-orange-700 underline"
                   >
                     Click to Chat
                   </a>

@@ -101,11 +101,16 @@ const Navbar = () => {
               Log Out
             </button> 
           : 
-          <><Link to="/login"> <h4>Login</h4> </Link>
+          <div className="hidden md:flex items-center space-x-4">
+            <Link to="/login">
+              <button className="border-2 border-orange-600 text-orange-600 px-4 py-1.5 rounded-full font-semibold hover:bg-orange-600 hover:text-white transition duration-300">
+                Login
+              </button>
+            </Link>
 
             {/* Sign Up Button */}
             <Link to="/signin">
-              <button className="hidden md:flex items-center space-x-2 bg-orange-600 text-white px-4 py-2 rounded-full font-semibold hover:bg-orange-700 transition duration-300">
+              <button className="flex items-center space-x-2 bg-orange-600 text-white px-4 py-2 rounded-full font-semibold hover:bg-orange-700 transition duration-300">
                 <span>Sign Up</span>
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -118,7 +123,8 @@ const Navbar = () => {
                   <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L19 10l-5.5 5.5M5 10h14" />
                 </svg>
               </button>
-            </Link></>
+            </Link>
+          </div>
         }
 
 

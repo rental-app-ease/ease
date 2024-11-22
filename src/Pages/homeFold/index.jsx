@@ -5,13 +5,14 @@ import Navbar from '../../components/Navbar';
 import pic from '../homeFold/headhouse.jpg'
 import Footer from '../../components/Footer';
 import { BiMap, BiDollarCircle } from "react-icons/bi";
+import { Aboutus } from '../aboutfolder/Aboutus';
 
 
 const Home = () => {
   const [products, setProducts] = useState([]);
   const getProducts = async () => {
     const response = await apiGetProducts()
-
+    setProducts(response.data.reverse())
     setProducts(response.data)
     console.log(response.data)
   }
@@ -107,7 +108,7 @@ const Home = () => {
 
                   {/* Price */}
                   <span className="block mt-4 text-lg font-semibold text-black group-hover:text-white transition-colors duration-300">
-                    ${product.price}
+                    {product.price}
                   </span>
                 </div>
 
@@ -127,6 +128,7 @@ const Home = () => {
         )}
       </div>
 
+      <Aboutus/>
       <Footer />
     </div>
 

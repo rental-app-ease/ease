@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { apiGetProducts } from '../../services/products';
+import { apiGetProducts, filterProduct } from '../../services/products';
 import Navbar from '../../components/Navbar';
 import Footer from '../../components/Footer';
 import { json, Link } from 'react-router-dom';
@@ -14,14 +14,14 @@ const AllItems = () => {
     const filter = JSON.stringify({
       name:{"$regex": query, "$options": "i"}
     });
-    const response = await apiSearch(filter);
+    const response = await filterProduct(searchQuery);
     setTitle(response.data);
+    console.log("title", response)
   }
   const [products, setProducts] = useState([]);
   const getProducts = async () => {
     const response = await apiGetProducts()
-
-    setProducts(response.data)
+    setProducts(response.data.reverse())
     console.log(response.data)
   }
 
@@ -45,7 +45,9 @@ const AllItems = () => {
               placeholder="Search for apartments..."
               className="w-full px-4 py-3 rounded-full border border-gray-300 focus:outline-none focus:border-orange-500 focus:ring-2 focus:ring-orange-200 transition-all duration-300"
             />
-            <button className="absolute right-3 top-1/2 -translate-y-1/2 bg-orange-500 text-white px-4 py-1.5 rounded-full hover:bg-orange-600 transition-all duration-300">
+            
+            <button className="absolute right-3 top-1/2 -translate-y-1/2 bg-orange-500 text-white px-4 py-1.5 rounded-full hover:bg-orange-600 transition-all duration-300" onClick={handleSearch}>
+            
               Search
             </button>
           </div>
@@ -87,7 +89,7 @@ const AllItems = () => {
 
                   {/* Price */}
                   <span className="block mt-4 text-lg font-semibold text-black group-hover:text-white transition-colors duration-300">
-                    ${product.price}
+                    {product.price}
                   </span>
                 </div>
 

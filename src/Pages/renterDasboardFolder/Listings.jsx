@@ -9,7 +9,7 @@ const Home = () => {
   const getProducts = async () => {
     const response = await apiVendorsProduct()
 
-    setProducts(response.data)
+    setProducts(response.data.reverse())
     console.log(response.data)
   }
 
@@ -54,7 +54,7 @@ const Home = () => {
 
                   {/* Price */}
                   <span className="block mt-4 text-lg font-semibold text-black group-hover:text-white transition-colors duration-300">
-                    ${product.price}
+                    {product.price}
                   </span>
                 </div>
               </div>

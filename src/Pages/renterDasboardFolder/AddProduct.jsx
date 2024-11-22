@@ -1,11 +1,11 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { toast } from 'react-toastify';
 
 const AddAdverts = () => {
   const [categories, setCategories] = useState([]);
-  const [feedbackMessage, setFeedbackMessage] = useState(null);
-  const [isError, setIsError] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
 
   const getCategories = async () => {
@@ -18,6 +18,7 @@ useEffect(() => {
       }, [])
   const saveAdvert = async (event) => {
     event.preventDefault();
+    setIsLoading(true);
     const formData = new FormData(event.target);
 
     try {
@@ -25,16 +26,29 @@ useEffect(() => {
         `${import.meta.env.VITE_BASE_URL}/items`,
         formData
       );
-      setFeedbackMessage("Advert added successfully!");
+      toast.success('House added successfully!', {
+        position: "top-right",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+      });
       setTimeout(() => {
-        navigate("/dashboard");
+        navigate("/renterdash");
       }, 2000);
     } catch (error) {
-      setFeedbackMessage("Failed to add advert. Please try again.");
-      setIsError(true);
+      toast.error('Failed to add house. Please try again.', {
+        position: "top-right",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+      });
+    } finally {
+      setIsLoading(false);
     }
-
-    setTimeout(() => setFeedbackMessage(null), 5000);
   };
 
   return (
@@ -43,17 +57,6 @@ useEffect(() => {
         <h1 className="text-2xl font-bold text-center text-orange-600 mb-6">
           Add an Apartment
         </h1>
-
-        {/* Feedback message */}
-        {feedbackMessage && (
-          <div
-            className={`text-center p-4 mb-4 rounded-lg ${
-              isError ? "bg-red-100 text-red-700" : "bg-green-100 text-green-700"
-            }`}
-          >
-            {feedbackMessage}
-          </div>
-        )}
 
         <form
           className="space-y-6 bg-black text-white p-8 rounded-lg shadow-md grid grid-cols-1 md:grid-cols-2 gap-6"
@@ -128,11 +131,12 @@ useEffect(() => {
           </div>
 
           <div>
-            <label className="block text-sm font-medium text-gray-300">Whatsapp link</label>
+            <label className="block text-sm font-medium text-gray-300">Whatsapp number</label>
             <input
               className="w-full px-4 py-2 border border-gray-500 rounded-md bg-black text-white focus:outline-none focus:ring-2 focus:ring-orange-600 focus:border-orange-600 transition"
-              type="text"
-              placeholder="Enter your whatsapp link"
+              type="tel"
+              placeholder="Enter your whatsapp number (e.g., +254123456789)"
+              pattern="^\+[1-9]\d{1,14}$"
               required
               name="whatsapplink"
             />
@@ -194,10 +198,18 @@ useEffect(() => {
           </div>
 
           <button
-            className="col-span-1 md:col-span-2 w-full py-3 bg-orange-600 text-white rounded-md font-semibold hover:bg-orange-700 transition duration-300 focus:outline-none focus:ring-2 focus:ring-orange-600"
+            className="col-span-1 md:col-span-2 w-full py-3 bg-orange-600 text-white rounded-md font-semibold hover:bg-orange-700 transition duration-300 focus:outline-none focus:ring-2 focus:ring-orange-600 disabled:bg-orange-400 disabled:cursor-not-allowed"
             type="submit"
+            disabled={isLoading}
           >
-            Submit
+            {isLoading ? (
+              <div className="flex items-center justify-center">
+                <div className="w-5 h-5 border-t-2 border-white border-solid rounded-full animate-spin mr-2"></div>
+                Uploading...
+              </div>
+            ) : (
+              'Submit'
+            )}
           </button>
         </form>
       </div>
