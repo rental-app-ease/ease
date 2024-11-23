@@ -66,14 +66,14 @@ const Details = () => {
   };
 
   return (
-    <div>
+    <div className="px-4 sm:px-6 lg:px-8">
       {/* Advert Image and Info */}
-      <div className="min-h-screen flex flex-col items-center justify-center pt-10">
-        <div className="bg-white rounded-xl shadow-2xl p-8 max-w-2xl w-full hover:shadow-3xl transition-shadow duration-300">
+      <div className="min-h-screen flex flex-col items-center justify-center py-6 sm:py-10">
+        <div className="bg-white rounded-xl shadow-2xl p-4 sm:p-8 w-full max-w-2xl hover:shadow-3xl transition-shadow duration-300">
           <img
             src={`https://savefiles.org/${productDetail.image}?shareable_link=507`}
             alt={productDetail.title}
-            className="w-full h-[300px] rounded-lg shadow-lg mb-6 object-cover hover:scale-[1.02] transition-transform duration-300"
+            className="w-full h-[200px] sm:h-[300px] rounded-lg shadow-lg mb-4 sm:mb-6 object-cover hover:scale-[1.02] transition-transform duration-300"
           />
           
           <h1 className="text-3xl font-extrabold text-gray-800 mb-4 border-b pb-2">
@@ -84,7 +84,7 @@ const Details = () => {
             {productDetail.description}
           </p>
 
-          <div className="space-y-4 bg-gray-50 p-6 rounded-lg">
+          <div className="space-y-4 bg-gray-50 p-4 sm:p-6 rounded-lg">
             <div className="flex items-center space-x-2">
               <span className="text-lg font-semibold text-gray-700">Category:</span>
               <span className="text-gray-700 bg-blue-50 px-3 py-1 rounded-full">
@@ -99,7 +99,7 @@ const Details = () => {
               </span>
             </div>
 
-            <div className="grid grid-cols-2 gap-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div className="bg-white p-4 rounded-lg shadow">
                 <p className="text-lg font-semibold text-gray-700">Amenities</p>
                 <ul className="list-disc pl-5 mt-2">
@@ -164,18 +164,18 @@ const Details = () => {
       </div>
 
       {/* Editing Form and Actions */}
-      <div className="min-h-screen flex flex-col items-center justify-center pt-10">
+      <div className="min-h-screen flex flex-col items-center justify-center py-6 sm:py-10">
         {isEditing ? (
-          <div className="bg-white rounded-xl shadow-2xl p-8 max-w-2xl w-full hover:shadow-3xl transition-shadow duration-300">
-            <h1 className="text-3xl font-extrabold text-gray-800 mb-6 border-b pb-2">
+          <div className="bg-white rounded-xl shadow-2xl p-4 sm:p-8 w-full max-w-2xl hover:shadow-3xl transition-shadow duration-300">
+            <h1 className="text-2xl sm:text-3xl font-extrabold text-gray-800 mb-4 sm:mb-6 border-b pb-2">
               Edit Apartment Detail
             </h1>
-            <form className="space-y-6" onSubmit={updateAdvert}>
+            <form className="space-y-4 sm:space-y-6" onSubmit={updateAdvert}>
               {/* Title */}
-              <div className="flex flex-col ">
-                <label className="font-semibold text-gray-700">Title</label>
+              <div className="flex flex-col">
+                <label className="font-semibold text-gray-700 text-sm sm:text-base">Title</label>
                 <input
-                  className="w-full border-2 rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-orange-500 transition-all hover:shadow-md bg-gray-50"
+                  className="w-full border-2 rounded-lg p-2 sm:p-3 focus:outline-none focus:ring-2 focus:ring-orange-500 transition-all hover:shadow-md bg-gray-50"
                   type="text"
                   placeholder="Enter your title"
                   required
@@ -324,32 +324,30 @@ const Details = () => {
                 />
               </div>
 
-              {/* Submit Button */}
-              <button
-                className={`w-full bg-orange-600 text-white p-4 rounded-lg font-bold transition-all hover:bg-orange-500 transform hover:scale-[1.02] shadow-lg ${
-                  isSubmitting ? "cursor-not-allowed opacity-50" : ""
-                }`}
-                type="submit"
-                disabled={isSubmitting}
-              >
-                {isSubmitting ? "Updating..." : "Update apartment"}
-              </button>
-
-              {/* Cancel Button */}
-              <button
-                onClick={() => setIsEditing(false)}
-                className="w-full bg-black text-white p-4 rounded-lg font-bold transition-all hover:bg-gray-800 transform hover:scale-[1.02] shadow-lg mt-4"
-              >
-                Cancel
-              </button>
+              {/* Make buttons stack on mobile */}
+              <div className="flex flex-col sm:flex-row sm:space-x-4 space-y-4 sm:space-y-0">
+                <button
+                  className="w-full bg-orange-600 text-white p-3 sm:p-4 rounded-lg font-bold transition-all hover:bg-orange-500 transform hover:scale-[1.02] shadow-lg"
+                  type="submit"
+                  disabled={isSubmitting}
+                >
+                  {isSubmitting ? "Updating..." : "Update apartment"}
+                </button>
+                <button
+                  onClick={() => setIsEditing(false)}
+                  className="w-full bg-black text-white p-3 sm:p-4 rounded-lg font-bold transition-all hover:bg-gray-800 transform hover:scale-[1.02] shadow-lg"
+                >
+                  Cancel
+                </button>
+              </div>
             </form>
           </div>
         ) : (
-          <div className="bg-white rounded-xl shadow-2xl p-8 max-w-md w-full hover:shadow-3xl transition-shadow duration-300 ">
-            <h1 className="text-3xl font-extrabold text-gray-800 mb-6 border-b pb-2 ">
+          <div className="bg-white rounded-xl shadow-2xl p-4 sm:p-8 w-full max-w-md hover:shadow-3xl transition-shadow duration-300">
+            <h1 className="text-2xl sm:text-3xl font-extrabold text-gray-800 mb-4 sm:mb-6 border-b pb-2">
               Edit Apartment Details
             </h1>
-            <div className="flex space-x-4">
+            <div className="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
               <button
                 onClick={() => setIsEditing(true)}
                 className="flex-1 bg-orange-600 text-white p-4 rounded-lg font-bold transition-all hover:bg-orange-500 transform hover:scale-[1.02] shadow-lg"

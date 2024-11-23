@@ -14,32 +14,56 @@ const Log = () => {
   const [role, setRole] = useState("vendor"); // State to store the selected role
 
   const handleSubmit = async (event) => {
-    event.preventDefault(); // prevent the page from reloading
+    event.preventDefault();
 
-    const formData = new FormData(event.target); // get data from the form
+    const formData = new FormData(event.target);
     const email = formData.get("email");
     const password = formData.get("password");
 
     try {
       const response = await apiSignin({ email, password });
       if (response.status === 200) {
-        // Store token
+        // First set the token and user data
         localStorage.setItem("token", response.data.accessToken);
-        localStorage.setItem("user", JSON.stringify({email}))
-        setUser({email})       
-        //get user profile
-        // const ProfileResponse = await apiGetProfile();
-        // console.log(ProfileResponse.data);
+        localStorage.setItem("user", JSON.stringify({email}));
+        
+        // Update the user context
+        await setUser({email});
 
-        // Show success toast 
-        toast.success("Login successful!");
+        toast.success("Login Successful! Welcome back.", {
+          position: "top-right",
+          autoClose: 3000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "colored",
+          style: {
+            backgroundColor: "#4CAF50",
+            color: "white",
+          },
+        });
 
-        // Redirect user after successful login
-          navigate("/renterdash"); // Change to your desired path
+        // Navigate immediately after state updates
+        navigate("/renterdash", { replace: true });
       }
     } catch (error) {
-      // Show error toast
-      toast.error("Login failed! Please check your credentials.");
+      // Enhanced error toast
+      toast.error("Login failed! Please check your credentials.", {
+        position: "top-right",
+        autoClose: 4000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "colored",
+        style: {
+          backgroundColor: "#f44336",
+          color: "white",
+        },
+      });
     }
   };
 

@@ -1,8 +1,29 @@
 import React from 'react'
+import Fraud from './Fraud';
 
 export const Safty = () => {
   return (
     <div className="max-w-6xl mx-auto px-4 py-8 bg-gray-50">
+      <div className="bg-blue-50 p-4 rounded-lg mb-8 flex items-center justify-center gap-2">
+        <p className="text-gray-700">
+          Notice something suspicious? Report it by filling out the form below
+        </p>
+        <svg 
+          xmlns="http://www.w3.org/2000/svg" 
+          className="h-5 w-5 text-blue-500 animate-bounce" 
+          fill="none" 
+          viewBox="0 0 24 24" 
+          stroke="currentColor"
+        >
+          <path 
+            strokeLinecap="round" 
+            strokeLinejoin="round" 
+            strokeWidth={2} 
+            d="M19 14l-7 7m0 0l-7-7m7 7V3" 
+          />
+        </svg>
+      </div>
+
       <h1 className="text-4xl font-bold text-center text-gray-800 mb-6">
         Safety Guidelines for Online Apartment Rental
       </h1>
@@ -155,12 +176,11 @@ export const Safty = () => {
 
       <div className="mt-12 text-center bg-blue-50 p-6 rounded-lg">
         <p className="text-gray-700 mb-2">
-          If you encounter any suspicious activity or feel unsafe, please contact local authorities immediately.
-        </p>
-        <p className="text-gray-800 font-semibold">
-          Emergency: 911 | Consumer Protection: 1-800-XXX-XXXX
+          If you encounter any suspicious activity or feel unsafe, please contact us by feeling the form below.
         </p>
       </div>
+
+      <Fraud/>
     </div>
   );
 };

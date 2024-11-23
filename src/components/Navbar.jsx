@@ -34,9 +34,13 @@ const Navbar = () => {
           RENT<span className="text-black">EASE</span>
         </h3>
 
-        {/* Hamburger Icon for Mobile */}
+        {/* Updated Mobile Menu Button */}
         <div className="md:hidden">
-          <button onClick={() => setIsOpen(!isOpen)} className="focus:outline-none">
+          <button 
+            onClick={() => setIsOpen(!isOpen)} 
+            className="focus:outline-none p-2 rounded-lg hover:bg-gray-100"
+            aria-label="Toggle menu"
+          >
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
@@ -85,7 +89,7 @@ const Navbar = () => {
               target="_blank" 
               rel="noopener noreferrer"
             >
-              Safety Tips
+              Safety Tips/Report form
             </a>
           </li>
         </Link>
@@ -131,14 +135,90 @@ const Navbar = () => {
 
       </nav>
 
-      {/* Mobile Menu */}
+      {/* Updated Mobile Menu */}
       {isOpen && (
-        <ul className="mt-2 space-y-2 text-base font-medium text-gray-800 md:hidden">
-          <li className="hover:text-orange-600 cursor-pointer">Home</li>
-          <li className="hover:text-orange-600 cursor-pointer">About Us</li>
-          <li className="hover:text-orange-600 cursor-pointer">Services</li>
-          <li className="hover:text-orange-600 cursor-pointer">Contact Us</li>
-        </ul>
+        <div className="absolute top-[76px] left-0 right-0 bg-white shadow-lg rounded-b-lg md:hidden">
+          <ul className="px-4 py-2 space-y-3 text-base font-medium text-gray-800">
+            <Link to="/" onClick={() => setIsOpen(false)}>
+              <li className="hover:text-orange-600 cursor-pointer py-2">Home</li>
+            </Link>
+            <Link to="/about" onClick={() => setIsOpen(false)}>
+              <li className="hover:text-orange-600 cursor-pointer py-2">About Us</li>
+            </Link>
+            {user && (
+              <Link to="/renterdash" onClick={() => setIsOpen(false)}>
+                <li className="hover:text-orange-600 cursor-pointer py-2">Dashboard</li>
+              </Link>
+            )}
+            
+            {/* Mobile Rooms Dropdown */}
+            <li className="py-2">
+              <div 
+                className="flex items-center justify-between hover:text-orange-600 cursor-pointer"
+                onClick={() => setIsDropdownOpen(!isDropdownOpen)}
+              >
+                <span>Rooms</span>
+                <FiChevronDown className={`transform transition-transform ${isDropdownOpen ? 'rotate-180' : ''}`} />
+              </div>
+              {isDropdownOpen && (
+                <ul className="mt-2 ml-4 space-y-2">
+                  <Link to="/service-dash" onClick={() => setIsOpen(false)}>
+                    <li className="hover:text-orange-600 py-1">Singleroom sef</li>
+                  </Link>
+                  <Link to="/service-dash/twobedroom" onClick={() => setIsOpen(false)}>
+                    <li className="hover:text-orange-600 py-1">Twobedroom sef</li>
+                  </Link>
+                  <Link to="/service-dash/chamber" onClick={() => setIsOpen(false)}>
+                    <li className="hover:text-orange-600 py-1">Chamber & halls</li>
+                  </Link>
+                  <Link to="/service-dash/threebedroom" onClick={() => setIsOpen(false)}>
+                    <li className="hover:text-orange-600 py-1">Three Bedrooms</li>
+                  </Link>
+                </ul>
+              )}
+            </li>
+
+            <Link to="/safety" onClick={() => setIsOpen(false)}>
+              <li className="hover:text-orange-600 cursor-pointer py-2">Safety Tips/Report form</li>
+            </Link>
+
+            {/* Mobile Authentication Buttons */}
+            {!user ? (
+              <div className="space-y-2 py-2">
+                <Link to="/login" onClick={() => setIsOpen(false)}>
+                  <button className="w-full border-2 border-orange-600 text-orange-600 px-4 py-2 rounded-full font-semibold hover:bg-orange-600 hover:text-white transition duration-300">
+                    Login
+                  </button>
+                </Link>
+                <Link to="/signin" onClick={() => setIsOpen(false)}>
+                  <button className="w-full flex items-center justify-center space-x-2 bg-orange-600 text-white px-4 py-2 rounded-full font-semibold hover:bg-orange-700 transition duration-300">
+                    <span>Sign Up</span>
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      strokeWidth={2}
+                      stroke="currentColor"
+                      className="w-4 h-4"
+                    >
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L19 10l-5.5 5.5M5 10h14" />
+                    </svg>
+                  </button>
+                </Link>
+              </div>
+            ) : (
+              <button 
+                onClick={() => {
+                  handleSignOut();
+                  setIsOpen(false);
+                }}
+                className="w-full bg-orange-600 text-white px-4 py-2 rounded-full font-semibold hover:bg-orange-700 transition duration-300"
+              >
+                Log Out
+              </button>
+            )}
+          </ul>
+        </div>
       )}
     </div>
   );
