@@ -51,7 +51,7 @@ const SignIn = () => {
       <div className="flex items-center justify-center min-h-screen pt-20 bg-black">
         <div className="w-full max-w-md p-8 space-y-6 bg-black rounded-lg shadow-lg mt-8">
           {/* Form Header */}
-          <h2 className="text-2xl font-bold text-center text-orange-600">Vendor Signup</h2>
+          <h2 className="text-2xl font-bold text-center text-orange-600">Register</h2>
 
           <form onSubmit={handleSubmit} className="space-y-5">
             {/* Name Input */}

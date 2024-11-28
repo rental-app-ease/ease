@@ -77,7 +77,7 @@ const Log = () => {
       <div className="flex items-center justify-center min-h-screen bg-[#fff8f6] pt-20 bg-black">
         <div className="w-full max-w-md p-8 space-y-6 bg-black rounded-lg shadow-lg">
           {/* Form Header */}
-          <h2 className="text-2xl font-bold text-center text-white">Vendor Login</h2>
+          <h2 className="text-2xl font-bold text-center text-white">Login</h2>
 
           <form onSubmit={handleSubmit} className="space-y-5">
             {/* Email Input */}
