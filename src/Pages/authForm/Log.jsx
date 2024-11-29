@@ -27,12 +27,12 @@ const Log = () => {
         localStorage.setItem("token", response.data.accessToken);
         localStorage.setItem("user", JSON.stringify({email}));
         
-        // Update the user context and wait for it to complete
+        // Update the user context
         await setUser({email});
 
         toast.success("Login Successful! Redirecting to dashboard...", {
           position: "top-right",
-          autoClose: 1500,
+          autoClose: 2000, // Reduced to 2 seconds since we're redirecting
           hideProgressBar: false,
           closeOnClick: true,
           pauseOnHover: true,
@@ -45,16 +45,19 @@ const Log = () => {
           },
         });
 
-        // Increase the delay slightly to ensure context is fully updated
+        // Add slight delay before navigation to ensure toast is visible
         setTimeout(() => {
           navigate("/renterdash", { replace: true });
-          // Force a page reload after navigation
-          window.location.reload();
-        }, 1500);
+        }, 2000);
       }
     } catch (error) {
-      // Enhanced error toast
-      toast.error("Login failed! Please check your credentials.", {
+      // More specific error messages based on error type
+      const errorMessage = error.response?.data?.message || 
+        error.response?.status === 401 ? "Invalid email or password" :
+        error.response?.status === 404 ? "User not found" :
+        "An error occurred during login. Please try again.";
+
+      toast.error(errorMessage, {
         position: "top-right",
         autoClose: 4000,
         hideProgressBar: false,
