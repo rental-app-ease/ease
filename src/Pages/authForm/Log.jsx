@@ -27,12 +27,12 @@ const Log = () => {
         localStorage.setItem("token", response.data.accessToken);
         localStorage.setItem("user", JSON.stringify({email}));
         
-        // Update the user context
+        // Update the user context and wait for it to complete
         await setUser({email});
 
-        toast.success("Login Successful! Welcome back.", {
+        toast.success("Login Successful! Redirecting to dashboard...", {
           position: "top-right",
-          autoClose: 3000,
+          autoClose: 1500,
           hideProgressBar: false,
           closeOnClick: true,
           pauseOnHover: true,
@@ -45,8 +45,12 @@ const Log = () => {
           },
         });
 
-        // Navigate immediately after state updates
-        navigate("/renterdash", { replace: true });
+        // Increase the delay slightly to ensure context is fully updated
+        setTimeout(() => {
+          navigate("/renterdash", { replace: true });
+          // Force a page reload after navigation
+          window.location.reload();
+        }, 1500);
       }
     } catch (error) {
       // Enhanced error toast
