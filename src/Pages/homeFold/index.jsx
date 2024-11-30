@@ -44,17 +44,17 @@ const Home = () => {
           </p>
 
           {/* Buttons */}
-          <div className="flex space-x-4">
+          <div className="flex flex-col sm:flex-row gap-4 sm:space-x-4 w-full sm:w-auto px-4 sm:px-0">
             <Link 
               to="/all-items"
-              className="flex items-center px-6 py-3 bg-orange-700 text-white rounded-full font-semibold hover:bg-orange-600 transition duration-300"
+              className="flex items-center justify-center px-4 sm:px-6 py-2 sm:py-3 bg-orange-700 text-white rounded-full font-semibold hover:bg-orange-600 transition duration-300 text-sm sm:text-base"
             >
               Book A Rental
-              <span className="ml-2 text-xl">→</span>
+              <span className="ml-2 text-lg sm:text-xl">→</span>
             </Link>
-            <button className="flex items-center px-6 py-3 bg-white text-black rounded-full font-semibold hover:bg-gray-100 transition duration-300">
+            <button className="flex items-center justify-center px-4 sm:px-6 py-2 sm:py-3 bg-white text-black rounded-full font-semibold hover:bg-gray-100 transition duration-300 text-sm sm:text-base">
               Learn More
-              <span className="ml-2 text-xl">→</span>
+              <span className="ml-2 text-lg sm:text-xl">→</span>
             </button>
           </div>
         </div>
