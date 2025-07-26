@@ -25,10 +25,10 @@ export const Aboutus = () => {
               </p>
             </div>
 
-            <div className="flex flex-col lg:flex-row items-center lg:items-start lg:space-x-6 mt-8 lg:mt-16">
+            <div className="flex flex-col lg:flex-row lg:items-start lg:space-x-6 mt-8 lg:mt-16">
               {/* Text Section */}
-              <div className="lg:w-1/2 space-y-4">
-                <p className="text-gray-700 text-lg">
+              <div className="lg:w-1/2 space-y-4 text-left">
+                <p className="text-gray-700 text-lg items-start">
                   Our vision is to become the leading platform for apartment rentals, recognized for our commitment to quality, convenience, and customer satisfaction. We aspire to transform the rental market by leveraging technology to create a seamless experience that empowers renters and property owners alike.
 
                   We envision a future where finding a home is effortless, transparent, and tailored to individual needs. Through our platform, we aim to build a community rooted in trust and reliability, setting the standard for excellence in the rental industry. Our goal is to make renting not just a transaction, but an experience that brings people closer to their ideal living spaces.
@@ -70,7 +70,7 @@ export const Aboutus = () => {
             <div className="flex flex-col lg:flex-row items-center lg:items-start lg:space-x-6">
               {/* Text Section */}
               <div className="lg:w-1/2 space-y-4">
-                <p className="text-gray-700 text-lg leading-relaxed">
+                <p className="text-gray-700 text-lg leading-relaxed text-left">
                   Our mission is to redefine the rental experience by providing a seamless, user-friendly platform that connects individuals with high-quality apartments and rental spaces tailored to their needs. We are committed to making renting easy, transparent, and accessible for everyone, whether you’re looking for a short-term stay or a long-term home.
 
                   By prioritizing customer satisfaction, we aim to offer a diverse selection of well-maintained properties that meet high standards of safety, comfort, and quality. Through continuous innovation and dedication to service excellence, we strive to empower renters and property owners alike, creating a community built on trust and convenience.
@@ -114,7 +114,7 @@ export const Aboutus = () => {
             <div className="flex flex-col lg:flex-row items-center lg:items-start lg:space-x-6">
               {/* Text Section */}
               <div className="lg:w-1/2 space-y-4">
-                <p className="text-gray-700 text-lg leading-relaxed">
+                <p className="text-gray-700 text-lg leading-relaxed text-left">
                   Our approach centers on innovation, user-centric design, and a commitment to quality service. We believe that renting a home should be as smooth and transparent as possible, so we continuously improve our platform with the latest technology and customer feedback. Here’s how we approach making this vision a reality:
                   Customer-First Mindset
                   We listen closely to our users, tailoring our platform to address their unique needs, preferences, and challenges. Our goal is to ensure that both renters and property owners have a seamless experience from start to finish.

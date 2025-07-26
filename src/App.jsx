@@ -70,10 +70,10 @@ function App() {
       element: <UserDetails />
     },
 
-    // {
-    //   path: "about",
-    //   element: <Aboutus />
-    // },
+    {
+      path: "about",
+      element: <Aboutus />
+    },
 
     {
       path: "/all-items",
