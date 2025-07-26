@@ -14,7 +14,7 @@ const Home = () => {
     const response = await apiGetProducts()
     setProducts(response.data.reverse())
     setProducts(response.data)
-    console.log(response.data)
+  
   }
 
   useEffect(() => {
